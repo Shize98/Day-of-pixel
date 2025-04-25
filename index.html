@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cozy Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: #ffe6f0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .slide {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: cover;
+      background-position: center;
+    }
+    .slide.active {
+      display: flex;
+    }
+    .next-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 1rem;
+      background-color: #ffb6c1;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .chat-bubble {
+      background-color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide active" style="background-image: url('bg1.jpg');">
+    <img src="cinnamoroll_grid.png" alt="Cinnamoroll" />
+    <button class="next-button">Next 💜</button>
+  </div>
+  <div class="slide" style="background-image: url('bg2.jpg');">
+    <img src="cinnamoroll_blue.png" alt="Cinnamoroll 2" />
+    <button class="next-button">Next 💜</button>
+  </div>
+  <div class="slide" style="background-image: url('bg3.jpg'); flex-wrap: wrap;">
+    <img src="pixelcat1.jpg" width="160"/>
+    <img src="pixelcat2.jpg" width="160"/>
+    <img src="pixelcat3.jpg" width="160"/>
+    <img src="pixelcat4.jpg" width="160"/>
+    <button class="next-button">Next 💜</button>
+  </div>
+  <div class="slide" style="background-color: #fff;">
+    <img src="pixelcouple.jpg" alt="Couple" style="margin-bottom: 20px;" />
+    <div class="chat-bubble">here for you 💌</div>
+  </div>
+  <script>
+    const slides = document.querySelectorAll(".slide");
+    const buttons = document.querySelectorAll(".next-button");
+    let current = 0;
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        slides[current].classList.remove("active");
+        current = (current + 1) % slides.length;
+        slides[current].classList.add("active");
+      });
+    });
+  </script>
+</body>
+</html>
